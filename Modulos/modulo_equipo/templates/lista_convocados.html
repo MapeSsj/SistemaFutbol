@@ -1,0 +1,63 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Title</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+      <!-- Bootstrap CSS v5.2.1 -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    </head>
+
+    <body>
+      <h1>Lista de Jugadores Convocados</h1>
+      <hr />
+      <div class="card text-start">
+        <div class="card-body">
+
+            <h4 class="card-title">{{ convocatoria }}</h4>
+            <div>{{ convocatoria.id }}</div>
+          <p class="card-text"><b>Encuentro: </b> {{ convocatoria.encuentro }}</p>
+        </div>
+      </div>
+      <main>
+        <hr>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>JUGADOR</th>
+              <th>OPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for jugador in jugadores_convocados %}
+              <tr>
+                <td>{{ jugador.id }}</td>
+                <td>{{ jugador }}</td>
+                <td>
+                    <button onclick="window.location.href='{% url 'desconvocar_jugador' jugador.id %}'"><b>Desconvocar</b></button>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <hr>
+        <b><a href="/admin/modulo_equipo/convocatoria/">Regresar</a></b>
+        
+      </main>
+      <footer>
+        <!-- place footer here -->
+      </footer>
+      <!-- Bootstrap JavaScript Libraries -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    
+    </body>
+  </html>
+{% endblock %}
